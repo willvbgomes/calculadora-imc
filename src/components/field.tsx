@@ -10,17 +10,18 @@ import { Input } from './ui/input'
 
 type FieldProps = {
   label: string
+  name: 'weight' | 'height'
   placeholder: string
   control: Control<{
-    weight: number
-    height: number
+    weight: string
+    height: string
   }>
 }
 
-export const Field = ({ control, label, placeholder }: FieldProps) => (
+export const Field = ({ control, label, name, placeholder }: FieldProps) => (
   <FormField
     control={control}
-    name="weight"
+    name={name}
     render={({ field }) => (
       <FormItem className="relative">
         <FormLabel className="mt-1.5 w-1/3">{label}:</FormLabel>
@@ -32,7 +33,7 @@ export const Field = ({ control, label, placeholder }: FieldProps) => (
             {...field}
           />
         </FormControl>
-        <FormMessage className="absolute top-[90%]" />
+        <FormMessage className="absolute top-[95%] text-xs" />
       </FormItem>
     )}
   />
